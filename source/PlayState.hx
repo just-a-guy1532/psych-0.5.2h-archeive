@@ -56,7 +56,11 @@ import openfl.events.KeyboardEvent;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
 import flixel.util.FlxSave;
-import animateatlas.AtlasFrameMaker;
+import animateatlas.AtlasFrameMaker; // fuck it
+// texture atlas stuff
+import flxanimate.*;
+import flxanimate.FlxAnimate;
+
 import Achievements;
 import StageData;
 import FunkinLua;
@@ -1758,7 +1762,7 @@ public function addShaderToCamera(cam:String,effect:ShaderEffect){//STOLE FROM A
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		var gfCutscene:FlxSprite = new FlxSprite(gf.x - 104, gf.y + 122);
 		gfCutscene.antialiasing = ClientPrefs.globalAntialiasing;
-		var picoCutscene:FlxSprite = new FlxSprite(gf.x - 849, gf.y - 264);
+		var picoCutscene:FlxAnimate = new FlxAnimate(gf.x - 849, gf.y - 264, 'week7:assets/week7/images/cutscenes/stressPico');
 		picoCutscene.antialiasing = ClientPrefs.globalAntialiasing;
 		var boyfriendCutscene:FlxSprite = new FlxSprite(boyfriend.x + 5, boyfriend.y + 20);
 		boyfriendCutscene.antialiasing = ClientPrefs.globalAntialiasing;
@@ -1913,9 +1917,7 @@ public function addShaderToCamera(cam:String,effect:ShaderEffect){//STOLE FROM A
 				{
 					gfCutscene.alpha = 0.00001;
 				}
-
-				picoCutscene.frames = AtlasFrameMaker.construct('cutscenes/stressPico');
-				picoCutscene.animation.addByPrefix('anim', 'Pico Badass', 24, false);
+				picoCutscene.anim.addBySymbol('anim', 'Pico Badass', 24, false);
 				addBehindGF(picoCutscene);
 				picoCutscene.alpha = 0.00001;
 
@@ -1979,7 +1981,7 @@ public function addShaderToCamera(cam:String,effect:ShaderEffect){//STOLE FROM A
 						{
 							gfCutscene.visible = false;
 							picoCutscene.alpha = 1;
-							picoCutscene.animation.play('anim', true);
+							picoCutscene.anim.play('anim', true);
 
 							boyfriendGroup.alpha = 1;
 							boyfriendCutscene.visible = false;
