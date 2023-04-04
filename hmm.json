@@ -8,6 +8,10 @@
 			"name":"lime",
 			"type":"haxelib"
 		},
+                {
+                        "name":"flxanimate",
+			"type":"haxelib"
+                },
 		{
 			"name":"openfl",
 			"type":"haxelib"
